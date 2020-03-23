@@ -9,5 +9,5 @@ CSV file contains cumulative numbers of total cases, total deaths, total number 
 **See the status quo figure below**![See the current status](https://github.com/gizal/COVID19/blob/master/COVID19_DE_Tuebingen.png)
 
 
-# ![Contents](https://github.com/gizal/COVID19/contents.md)
+# ![Contents](https://github.com/gizal/COVID19/blob/master/contents.md)
 
