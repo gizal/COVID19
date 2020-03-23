@@ -66,3 +66,5 @@ elseif t{m}(4:6) == 'Mar'
     t{m}(4:10) = '03-2020';
 end
 end
+writetable(RKI_COVID19_DE,'RKI_COVID19_DE.mat','WriteRowNames',true)
+writetable(RKI_COVID19_DE,'RKI_COVID19_DE.csv','WriteRowNames',true)
