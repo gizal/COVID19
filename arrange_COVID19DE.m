@@ -1,6 +1,7 @@
 %% Written by Gizem Altan on 23.03.2020
 % contact: https://gizemaltan.com/contact/
 
+clear all; close all;
 %% Load the data
 import_COVID19DE %call the script
 RKICOVID19Copy = RKICOVID1;
@@ -55,16 +56,40 @@ t2 = datetime(2020,3,22);
 t = t1:t2;
 t = string(t);
 for m = 1 : length(DaysVector)
-if t{m}(4:6) == 'Jan'
-    t{m}(4:6) = '';
-    t{m}(4:10) = '01-2020';
-elseif t{m}(4:6) == 'Feb'
-    t{m}(4:6) = '';
-    t{m}(4:10) = '02-2020';
-elseif t{m}(4:6) == 'Mar'
-    t{m}(4:6) = '';
-    t{m}(4:10) = '03-2020';
+    if t{m}(4:6) == 'Jan'
+        t{m}(4:6) = '';
+        t{m}(4:10) = '01-2020';
+    elseif t{m}(4:6) == 'Feb'
+        t{m}(4:6) = '';
+        t{m}(4:10) = '02-2020';
+    elseif t{m}(4:6) == 'Mar'
+        t{m}(4:6) = '';
+        t{m}(4:10) = '03-2020';
+    end
 end
+
+%% Separate cities
+% sort the dataset according to the cities
+RKI_COVID19_DE = sortrows(RKI_COVID19_DE,'City','ascend');
+Cities = RKI_COVID19_DE.City;
+uCities = unique(Cities);
+for i = 1 : length(uCities)
+    idx = strfind(Cities, uCities{i});
+    tf = cellfun('isempty',idx); % true for empty cells
+    idx(tf) = {0};               % replace by a cell with a zero
+    idxM = cell2mat(idx);
+    rowInd = find(idxM==1);
+    RKI_COVID19_DE_Cities{1,i} = RKI_COVID19_DE(rowInd(1):rowInd(length(rowInd)),1:8);
 end
-writetable(RKI_COVID19_DE,'RKI_COVID19_DE.mat','WriteRowNames',true)
+RKI_COVID19_DE_Cities = cell2table(RKI_COVID19_DE_Cities);
+RKI_COVID19_DE_Tuebingen = RKI_COVID19_DE(9320:9373,1:8);
+%% Reduce each day to one row
+
+
+%% Fill in the gaps in the data
+
+
+%writetable(RKI_COVID19_DE,'RKI_COVID19_DE.mat','WriteRowNames',true)
 writetable(RKI_COVID19_DE,'RKI_COVID19_DE.csv','WriteRowNames',true)
+writetable(RKI_COVID19_DE_Cities,'RKI_COVID19_DE_Cities.csv','WriteRowNames',true)
+writetable(RKI_COVID19_DE_Tuebingen,'RKI_COVID19_DE_Tuebingen.csv','WriteRowNames',true)
