@@ -8,6 +8,8 @@
 
 **RKI_COVID19_DE.csv** - data filtered with the codes shared in *code* folder for Germany
 
+
+
 **code folder contains:**
 
 **import_COVID19DE.m** - MATLAB script to import csv data, called by the following script.
@@ -15,6 +17,8 @@
 **arrange_COVID19DE.m** - MATLAB script to arrange the dataset and export as csv files (i.e. used to create the files in the dataset folder)
 
 **COVID19_DE_Tuebingen.ipynb** - uses the dataset *covid19_de_tuebingen.csv* to create the figure that is in the output folder. 
+
+
 
 **output folder contains:**
 
