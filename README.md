@@ -6,7 +6,7 @@ Data is pulled from Robert Koch-Institut (i.e. RKI COVID19)
 
 After over a year the shape of the data has changed a lot, also my approach to visualizing the number of cases and number of deaths. The Jupyter notebook named 'covid-19-germany-landkreise' is the last code that creates the figure below.
 
-**See the status quo figure below**![See the current status](https://github.com/gizal/COVID19/blob/master/COVID19_DE_Tuebingen2.png)
+**See the status quo figure below**![See the current status](https://github.com/gizal/COVID19/blob/master/output/COVID19_DE_Tuebingen2.png)
 
 
 # 23.03.2020
